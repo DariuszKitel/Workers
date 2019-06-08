@@ -6,7 +6,10 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     itemOperations={"get"},
+ *     collectionOperations={"get"}
+ *     )
  * @ORM\Entity(repositoryClass="App\Repository\QuestionRepository")
  */
 class Question
@@ -27,6 +30,18 @@ class Question
      * @ORM\Column(type="datetime")
      */
     private $published;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="question")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\WorkPost", inversedBy="question")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $workPost;
 
     public function getId(): ?int
     {
@@ -56,4 +71,37 @@ class Question
 
         return $this;
     }
+
+    /**
+     * @return User
+     */
+    public function getAuthor(): User
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param User $author
+     */
+    public function setAuthor(User $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    public function getWorkPost(): WorkPost
+    {
+        return $this->workPost;
+    }
+
+    public function setWorkPost(WorkPost $workPost): self
+    {
+        $this->workPost = $workPost;
+
+        return $this;
+    }
+
+
+
 }
