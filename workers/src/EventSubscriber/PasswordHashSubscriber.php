@@ -41,7 +41,7 @@ class PasswordHashSubscriber implements EventSubscriberInterface //klasa ktora h
     public function hashPassword(GetResponseForControllerResultEvent $event)
     {
         $user = $event->getControllerResult();
-        $method = $event->getRequest();
+        $method = $event->getRequest()->getMethod();
 
         if (!$user instanceof User || Request::METHOD_POST !== $method) {
             return;

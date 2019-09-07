@@ -6,13 +6,19 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\WorkPostRepository")
  * @ApiResource(
  *     itemOperations={"get"},
- *     collectionOperations={"get"}
- *     )
+ *     collectionOperations={
+ *     "get",
+ *     "post"={
+ *          "access_control"="is_granted('IS_AUTHENTICATED_FULLY')"
+ *          }
+ *      }
+ *   )
  */
 class WorkPost
 {
@@ -25,22 +31,24 @@ class WorkPost
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(min=5, minMessage="Wpis musi być dłuższy niż 5 znaków")
      */
     private $title;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
+     * @Assert\DateTime()
      */
     private $published;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
+     * @Assert\Length(min=20, minMessage="Zawartość musi być dłuższa niż 20 znaków")
      */
     private $content;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="posts")
@@ -52,8 +60,10 @@ class WorkPost
      * @ORM\Column(type="string", length=255)
      */
     private $CV;
+
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      */
     private $slug;
 
