@@ -22,6 +22,30 @@ class AppFixtures extends Fixture
      */
     private $faker;
 
+    private const USERS = [
+        [
+            'username' => 'Wonder',
+            'email' => 'wonder@gmail.com',
+            'name' => 'Wonder Janusz',
+            'password' => 'wonder123'
+        ],[
+            'username' => 'Jasio',
+            'email' => 'jasio@gmail.com',
+            'name' => 'Jasio Masio',
+            'password' => 'jasio123'
+        ],[
+            'username' => 'Marek',
+            'email' => 'marek@gmail.com',
+            'name' => 'Marek Bak',
+            'password' => 'marek123'
+        ],[
+            'username' => 'Adam',
+            'email' => 'adam@gmail.com',
+            'name' => 'Adam Mak',
+            'password' => 'adam123'
+        ]
+    ];
+
     public function __construct(UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->passwordEncoder = $passwordEncoder;
@@ -37,14 +61,16 @@ class AppFixtures extends Fixture
 
     private function loadWorkPost(ObjectManager $manager)
     {
-        $user = $this->getReference('user_admin');
 
         for($i = 0 ; $i <100 ; $i++) {
             $workPost = new WorkPost();
             $workPost->setTitle($this->faker->realText(30));
             $workPost->setPublished($this->faker->dateTimeThisYear);
             $workPost->setContent($this->faker->realText());
-            $workPost->setAuthor($user);
+
+            $authorReference = $this->getRandomUserReference();
+
+            $workPost->setAuthor($authorReference);
             $workPost->setCV($this->faker->password());
             $workPost->setSlug($this->faker->slug);
 
@@ -58,17 +84,20 @@ class AppFixtures extends Fixture
 
     private function loadUser(ObjectManager $manager)
     {
-        $user = new User();
-        $user->setUsername('admin');
-        $user->setEmail('admin@gmail.com');
-        $user->setName('Dariusz Kitel');
-        $user->setPassword($this->passwordEncoder->encodePassword(
-            $user,
-            'haslo123'
-        ));
-        $this->addReference('user_admin', $user);
+        foreach (self::USERS as $userFixture) {
+            $user = new User();
+            $user->setUsername($userFixture['username']);
+            $user->setEmail($userFixture['email']);
+            $user->setName($userFixture['name']);
+            $user->setPassword($this->passwordEncoder->encodePassword(
+                $user,
+                $userFixture['password']
+            ));
+            $this->addReference('user_' . $userFixture['username'], $user);
 
-        $manager->persist($user);
+            $manager->persist($user);
+        }
+
         $manager->flush();
     }
 
@@ -79,13 +108,21 @@ class AppFixtures extends Fixture
                 $question = new Question();
                 $question->setContent($this->faker->realText());
                 $question->setPublished($this->faker->dateTimeThisYear);
-                $question->setAuthor($this->getReference('user_admin'));
+
+                $authorReference = $this->getRandomUserReference();
+
+                $question->setAuthor($authorReference);
                 $question->setWorkPost($this->getReference("work_post_$i"));
 
                 $manager->persist($question);
             }
         }
         $manager->flush();
+    }
+
+    private function getRandomUserReference(): User
+    {
+        return $this->getReference('user_' . self::USERS[rand(0, 3)]['username']);
     }
 
 

@@ -10,6 +10,7 @@ namespace App\EventSubscriber;
 
 
 use ApiPlatform\Core\EventListener\EventPriorities;
+use App\Entity\Question;
 use App\Entity\WorkPost;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,7 +47,7 @@ class AuthoredEntitySubscriber implements EventSubscriberInterface
         /** @var UserInterface $author */
         $author = $this->tokenStorage->getToken()->getUser();
 
-        if (!$entity instanceof WorkPost || Request::METHOD_POST !== $method) {
+        if ((!$entity instanceof WorkPost && !$entity instanceof Question) || Request::METHOD_POST !== $method) {
             return;
         }
 
