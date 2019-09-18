@@ -6,7 +6,11 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Interfaces\AuthoredEntityInterface;
+use App\Interfaces\PublishedDateEntityInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\WorkPostRepository")
@@ -14,7 +18,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     itemOperations={
  *          "get",
  *          "put"={
- *              "access_control"="is_granted('IS_AUTHENTICATED_FULLY') and object.getAuthor() === user"
+ *              "access_control"="is_granted('IS_AUTHENTICATED_FULLY') and object.getAuthor() == user"
  *          }
  *      },
  *     collectionOperations={
@@ -22,10 +26,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     "post"={
  *          "access_control"="is_granted('IS_AUTHENTICATED_FULLY')"
  *          }
- *      }
+ *      },
+ *      denormalizationContext={
+            "groups"={"post"}
+ *     }
  *   )
  */
-class WorkPost
+class WorkPost implements AuthoredEntityInterface, PublishedDateEntityInterface
 {
     /**
      * @ORM\Id()
@@ -38,13 +45,12 @@ class WorkPost
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
      * @Assert\Length(min=5, minMessage="Wpis musi być dłuższy niż 5 znaków")
+     * @Groups({"post"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Assert\NotBlank()
-     * @Assert\DateTime()
      */
     private $published;
 
@@ -52,6 +58,7 @@ class WorkPost
      * @ORM\Column(type="text")
      * @Assert\NotBlank()
      * @Assert\Length(min=20, minMessage="Zawartość musi być dłuższa niż 20 znaków")
+     * @Groups({"post"})
      */
     private $content;
 
@@ -63,12 +70,14 @@ class WorkPost
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"post"})
      */
     private $CV;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank()
+     * @Groups({"post"})
      */
     private $slug;
 
@@ -109,7 +118,7 @@ class WorkPost
         return $this->published;
     }
 
-    public function setPublished(\DateTimeInterface $published): self
+    public function setPublished(\DateTimeInterface $published): PublishedDateEntityInterface
     {
         $this->published = $published;
 
@@ -161,9 +170,9 @@ class WorkPost
     }
 
     /**
-     * @param User $author
+     * @param UserInterface $author
      */
-    public function setAuthor(User $author): self
+    public function setAuthor(UserInterface $author): AuthoredEntityInterface
     {
         $this->author = $author;
 

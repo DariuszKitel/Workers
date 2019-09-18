@@ -1,17 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Speed
- * Date: 29.06.2019
- * Time: 10:46
- */
 
 namespace App\EventSubscriber;
 
 
 use ApiPlatform\Core\EventListener\EventPriorities;
-use App\Entity\Question;
-use App\Entity\WorkPost;
+use App\Interfaces\AuthoredEntityInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
@@ -47,7 +40,7 @@ class AuthoredEntitySubscriber implements EventSubscriberInterface
         /** @var UserInterface $author */
         $author = $this->tokenStorage->getToken()->getUser();
 
-        if ((!$entity instanceof WorkPost && !$entity instanceof Question) || Request::METHOD_POST !== $method) {
+        if (!$entity instanceof AuthoredEntityInterface || Request::METHOD_POST !== $method) {
             return;
         }
 

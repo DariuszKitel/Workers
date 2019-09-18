@@ -4,13 +4,18 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+use App\Interfaces\AuthoredEntityInterface;
+use App\Interfaces\PublishedDateEntityInterface;
 
 /**
  * @ApiResource(
  *     itemOperations={
  *          "get",
  *          "put"={
- *              "access_control"="is_granted('IS_AUTHENTICATED_FULLY') and object.getAuthor() === user"
+ *              "access_control"="is_granted('IS_AUTHENTICATED_FULLY') and object.getAuthor() == user"
  *          }
  *      },
  *     collectionOperations={
@@ -18,11 +23,14 @@ use Doctrine\ORM\Mapping as ORM;
  *     "post"={
  *          "access_control"="is_granted('IS_AUTHENTICATED_FULLY')"
  *          }
- *      }
+ *      },
+ *      denormalizationContext={
+ *          "groups"={"post"}
+ *     }
  *   )
  * @ORM\Entity(repositoryClass="App\Repository\QuestionRepository")
  */
-class Question
+class Question implements AuthoredEntityInterface, PublishedDateEntityInterface
 {
     /**
      * @ORM\Id()
@@ -33,6 +41,9 @@ class Question
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"post"})
+     * @Assert\NotBlank()
+     * @Assert\Length(min="5", minMessage="Pytanie musi zawierać minimum 5 znaków!", max="3000", maxMessage="Przekroczono maksymalny 3000 limit znaków")
      */
     private $content;
 
@@ -75,7 +86,7 @@ class Question
         return $this->published;
     }
 
-    public function setPublished(\DateTimeInterface $published): self
+    public function setPublished(\DateTimeInterface $published): PublishedDateEntityInterface
     {
         $this->published = $published;
 
@@ -91,9 +102,9 @@ class Question
     }
 
     /**
-     * @param User $author
+     * @param UserInterface $author
      */
-    public function setAuthor(User $author): self
+    public function setAuthor(UserInterface $author): AuthoredEntityInterface
     {
         $this->author = $author;
 
