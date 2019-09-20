@@ -58,7 +58,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"get", "post"})
+     * @Groups({"get", "post", "get-question-with-author", "get-work-post-with-author"})
      * @Assert\NotBlank()
      * @Assert\Length(min="2", minMessage="Imię musi posiadać conajmniej 2 znaki", max="255", maxMessage="Przekroczono limit znaków!")
      */
@@ -88,7 +88,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"get", "post", "put"})
+     * @Groups({"get", "post", "put", "get-question-with-author", "get-work-post-with-author"})
      * @Assert\NotBlank()
      * @Assert\Length(min="2", minMessage="Imię musi posiadać conajmniej 2 znaki", max="255", maxMessage="Przekroczono limit znaków!")
      */

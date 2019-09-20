@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -16,7 +17,11 @@ use App\Interfaces\PublishedDateEntityInterface;
  * @ORM\Entity(repositoryClass="App\Repository\WorkPostRepository")
  * @ApiResource(
  *     itemOperations={
- *          "get",
+ *          "get"={
+ *              "normalization_context"={
+ *                  "groups"={"get-work-post-with-author"}
+ *              }
+ *          },
  *          "put"={
  *              "access_control"="is_granted('IS_AUTHENTICATED_FULLY') and object.getAuthor() == user"
  *          }
@@ -38,6 +43,7 @@ class WorkPost implements AuthoredEntityInterface, PublishedDateEntityInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"get-work-post-with-author"})
      */
     private $id;
 
@@ -45,12 +51,13 @@ class WorkPost implements AuthoredEntityInterface, PublishedDateEntityInterface
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
      * @Assert\Length(min=5, minMessage="Wpis musi być dłuższy niż 5 znaków")
-     * @Groups({"post"})
+     * @Groups({"post", "get-work-post-with-author"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"get-work-post-with-author"})
      */
     private $published;
 
@@ -58,31 +65,34 @@ class WorkPost implements AuthoredEntityInterface, PublishedDateEntityInterface
      * @ORM\Column(type="text")
      * @Assert\NotBlank()
      * @Assert\Length(min=20, minMessage="Zawartość musi być dłuższa niż 20 znaków")
-     * @Groups({"post"})
+     * @Groups({"post", "get-work-post-with-author"})
      */
     private $content;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="posts")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"get-work-post-with-author"})
      */
     private $author;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"post"})
+     * @Groups({"post", "get-work-post-with-author"})
      */
     private $CV;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank()
-     * @Groups({"post"})
+     * @Groups({"post", "get-work-post-with-author"})
      */
     private $slug;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Question", mappedBy="workPost")
+     * @ApiSubresource()
+     * @Groups({"get-work-post-with-author"})
      */
     private $question;
 

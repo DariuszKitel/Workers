@@ -18,12 +18,22 @@ use App\Interfaces\PublishedDateEntityInterface;
  *              "access_control"="is_granted('IS_AUTHENTICATED_FULLY') and object.getAuthor() == user"
  *          }
  *      },
- *     collectionOperations={
- *     "get",
- *     "post"={
- *          "access_control"="is_granted('IS_AUTHENTICATED_FULLY')"
- *          }
- *      },
+ *      *     collectionOperations={
+ *         "get",
+ *         "post"={
+ *             "access_control"="is_granted('IS_AUTHENTICATED_FULLY')",
+ *             "normalization_context"={
+ *                 "groups"={"get-question-with-author"}
+ *             }
+ *         }
+ *     },
+ *     subresourceOperations={
+ *         "api_work_posts_questions_get_subresource"={
+ *             "normalization_context"={
+ *                 "groups"={"get-question-with-author"}
+ *             }
+ *         }
+ *     },
  *      denormalizationContext={
  *          "groups"={"post"}
  *     }
@@ -36,12 +46,13 @@ class Question implements AuthoredEntityInterface, PublishedDateEntityInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"get-question-with-author"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"post"})
+     * @Groups({"post", "get-question-with-author"})
      * @Assert\NotBlank()
      * @Assert\Length(min="5", minMessage="Pytanie musi zawierać minimum 5 znaków!", max="3000", maxMessage="Przekroczono maksymalny 3000 limit znaków")
      */
@@ -49,18 +60,21 @@ class Question implements AuthoredEntityInterface, PublishedDateEntityInterface
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"get-question-with-author"})
      */
     private $published;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="question")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"get-question-with-author"})
      */
     private $author;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\WorkPost", inversedBy="question")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"post"})
      */
     private $workPost;
 
