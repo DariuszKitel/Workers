@@ -48,6 +48,14 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class User implements UserInterface
 {
+    const ROLE_QUESTIONER = 'ROLE_QUESTIONER';
+    const ROLE_WRITER = 'ROLE_WRITER';
+    const ROLE_EDITOR = 'ROLE_EDITOR';
+    const ROLE_ADMIN = 'ROLE_ADMIN';
+    const ROLE_SUPERADMIN = 'ROLE_SUPERADMIN';
+
+    const DEFAULTS_ROLES = [self::ROLE_QUESTIONER];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -96,7 +104,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"post", "put"})
+     * @Groups({"post", "put", "get-admin", "get-owner"})
      * @Assert\NotBlank()
      * @Assert\Email()
      * @Assert\Length(min="6", max="255", minMessage="Ten adres jest za krótki!", maxMessage="Przekroczono limt znaków!")
@@ -115,10 +123,17 @@ class User implements UserInterface
      */
     private $question;
 
+    /**
+     * @ORM\Column(type="simple_array", length=200)
+     * @Groups({"get-admin", "get-owner"})
+     */
+    private $roles;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
         $this->question = new ArrayCollection();
+        $this->roles = self::DEFAULTS_ROLES;
     }
 
     public function getId(): ?int
@@ -190,10 +205,14 @@ class User implements UserInterface
         return $this->question;
     }
 
-
-    public function getRoles()
+    public function getRoles(): array
     {
-        return ['ROLE_USER'];
+        return $this->roles;
+    }
+
+    public function setRoles(array $roles)
+    {
+        $this->roles = $roles;
     }
 
     public function getSalt()
@@ -215,6 +234,52 @@ class User implements UserInterface
     public function setRetypedPassword($retypedPassword): void
     {
         $this->retypedPassword = $retypedPassword;
+    }
+
+    public function addPost(WorkPost $post): self
+    {
+        if (!$this->posts->contains($post)) {
+            $this->posts[] = $post;
+            $post->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removePost(WorkPost $post): self
+    {
+        if ($this->posts->contains($post)) {
+            $this->posts->removeElement($post);
+            // set the owning side to null (unless already changed)
+            if ($post->getAuthor() === $this) {
+                $post->setAuthor(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function addQuestion(Question $question): self
+    {
+        if (!$this->question->contains($question)) {
+            $this->question[] = $question;
+            $question->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuestion(Question $question): self
+    {
+        if ($this->question->contains($question)) {
+            $this->question->removeElement($question);
+            // set the owning side to null (unless already changed)
+            if ($question->getAuthor() === $this) {
+                $question->setAuthor(null);
+            }
+        }
+
+        return $this;
     }
 
 

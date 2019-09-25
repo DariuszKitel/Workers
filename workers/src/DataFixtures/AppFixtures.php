@@ -27,22 +27,32 @@ class AppFixtures extends Fixture
             'username' => 'Wonder',
             'email' => 'wonder@gmail.com',
             'name' => 'Wonder Janusz',
-            'password' => 'wonder123'
+            'password' => 'wonder123',
+            'roles' => [User::ROLE_SUPERADMIN]
         ],[
             'username' => 'Jasio',
             'email' => 'jasio@gmail.com',
             'name' => 'Jasio Masio',
-            'password' => 'jasio123'
+            'password' => 'jasio123',
+            'roles' => [User::ROLE_ADMIN]
         ],[
             'username' => 'Marek',
             'email' => 'marek@gmail.com',
             'name' => 'Marek Bak',
-            'password' => 'marek123'
+            'password' => 'marek123',
+            'roles' => [User::ROLE_WRITER]
         ],[
             'username' => 'Adam',
             'email' => 'adam@gmail.com',
             'name' => 'Adam Mak',
-            'password' => 'adam123'
+            'password' => 'adam123',
+            'roles' => [User::ROLE_EDITOR]
+        ],[
+            'username' => 'Lukasz',
+            'email' => 'lukasz@gmail.com',
+            'name' => 'Lukasz Mar',
+            'password' => 'lukasz123',
+            'roles' => [User::ROLE_QUESTIONER]
         ]
     ];
 
@@ -68,7 +78,7 @@ class AppFixtures extends Fixture
             $workPost->setPublished($this->faker->dateTimeThisYear);
             $workPost->setContent($this->faker->realText());
 
-            $authorReference = $this->getRandomUserReference();
+            $authorReference = $this->getRandomUserReference($workPost);
 
             $workPost->setAuthor($authorReference);
             $workPost->setCV($this->faker->password());
@@ -93,6 +103,8 @@ class AppFixtures extends Fixture
                 $user,
                 $userFixture['password']
             ));
+            $user->setRoles($userFixture['roles']);
+
             $this->addReference('user_' . $userFixture['username'], $user);
 
             $manager->persist($user);
@@ -109,7 +121,7 @@ class AppFixtures extends Fixture
                 $question->setContent($this->faker->realText());
                 $question->setPublished($this->faker->dateTimeThisYear);
 
-                $authorReference = $this->getRandomUserReference();
+                $authorReference = $this->getRandomUserReference($question);
 
                 $question->setAuthor($authorReference);
                 $question->setWorkPost($this->getReference("work_post_$i"));
@@ -120,9 +132,25 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    private function getRandomUserReference(): User
+    private function getRandomUserReference($entity): User
     {
-        return $this->getReference('user_' . self::USERS[rand(0, 3)]['username']);
+        $randomUser = self::USERS[rand(0,4)];
+
+        if ($entity instanceof WorkPost && !count(array_intersect(
+                $randomUser['roles'],
+                [User::ROLE_SUPERADMIN, User::ROLE_ADMIN, User::ROLE_WRITER]
+            ))) {
+            return $this->getRandomUserReference($entity);
+        }
+
+        if ($entity instanceof Question && !count(array_intersect(
+                $randomUser['roles'],
+                [User::ROLE_SUPERADMIN, User::ROLE_ADMIN, User::ROLE_WRITER, User::ROLE_QUESTIONER]
+            ))) {
+            return $this->getRandomUserReference($entity);
+        }
+
+        return $this->getReference('user_' .$randomUser['username']);
     }
 
 
