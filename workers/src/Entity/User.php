@@ -8,8 +8,10 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Controller\ResetPassAction;
 
 /**
  * @ApiResource(
@@ -27,6 +29,15 @@ use Symfony\Component\Validator\Constraints as Assert;
  *              },
  *              "normalization_context"={
  *              "groups"={"get"}
+ *              }
+ *          },
+ *     "put-reset-pass"={
+ *              "access_control"="is_granted('IS_AUTHENTICATED_FULLY') and object === user",
+ *              "method"="PUT",
+ *              "path"="/users/{id}/reset-pass",
+ *              "controller"=ResetPassAction::class,
+ *              "denormalization_context"={
+ *              "groups"={"put-reset-pass"}
  *              }
  *          }
  *     },
@@ -67,47 +78,76 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"get", "post", "get-question-with-author", "get-work-post-with-author"})
-     * @Assert\NotBlank()
-     * @Assert\Length(min="2", minMessage="Imię musi posiadać conajmniej 2 znaki", max="255", maxMessage="Przekroczono limit znaków!")
+     * @Assert\NotBlank(groups={"post"})
+     * @Assert\Length(min="2", minMessage="Imię musi posiadać conajmniej 2 znaki", max="255", maxMessage="Przekroczono limit znaków!", groups={"post"})
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"put", "post"})
+     * @Groups({"post"})
+     * @Assert\NotBlank(groups={"post"})
+     * @Assert\Regex(
+     *     pattern="/(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{7,}/",
+     *     message="Hasło musi składać się conajmniej z 7 znaków i zawierać jedną cyfrę, jedną dużą literę oraz małą",
+     *     groups={"post"}
+     * )
+     */
+    private $password;
+
+    /**
+     * @Groups({"post"})
+     * @Assert\NotBlank(groups={"post"})
+     * @Assert\Expression(
+     *     "this.getPassword() === this.getRetypedPassword()",
+     *     message="Hasła nie pasują",
+     *     groups={"post"}
+     * )
+     */
+    private $retypedPassword;
+
+    /**
+     * @Groups({"put-reset-pass"})
      * @Assert\NotBlank()
      * @Assert\Regex(
      *     pattern="/(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{7,}/",
      *     message="Hasło musi składać się conajmniej z 7 znaków i zawierać jedną cyfrę, jedną dużą literę oraz małą"
      * )
      */
-    private $password;
+    private $newPass;
 
     /**
-     * @Groups({"put", "post"})
+     * @Groups({"put-reset-pass"})
      * @Assert\NotBlank()
      * @Assert\Expression(
-     *     "this.getPassword() === this.getRetypedPassword()",
+     *     "this.getNewPass() === this.getNewRetypedPass()",
      *     message="Hasła nie pasują"
      * )
      */
-    private $retypedPassword;
+    private $newRetypedPass;
+
+    /**
+     * @Groups({"put-reset-pass"})
+     * @Assert\NotBlank()
+     * @UserPassword()
+     */
+    private $oldPass;
 
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"get", "post", "put", "get-question-with-author", "get-work-post-with-author"})
-     * @Assert\NotBlank()
-     * @Assert\Length(min="2", minMessage="Imię musi posiadać conajmniej 2 znaki", max="255", maxMessage="Przekroczono limit znaków!")
+     * @Assert\NotBlank(groups={"post"})
+     * @Assert\Length(min="2", minMessage="Imię musi posiadać conajmniej 2 znaki", max="255", maxMessage="Przekroczono limit znaków!", groups={"post", "put"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"post", "put", "get-admin", "get-owner"})
-     * @Assert\NotBlank()
-     * @Assert\Email()
-     * @Assert\Length(min="6", max="255", minMessage="Ten adres jest za krótki!", maxMessage="Przekroczono limt znaków!")
+     * @Assert\NotBlank(groups={"post"})
+     * @Assert\Email(groups={"post", "put"})
+     * @Assert\Length(min="6", max="255", minMessage="Ten adres jest za krótki!", maxMessage="Przekroczono limt znaków!", groups={"post", "put"})
      */
     private $email;
 
@@ -127,7 +167,7 @@ class User implements UserInterface
      * @ORM\Column(type="simple_array", length=200)
      * @Groups({"get-admin", "get-owner"})
      */
-    private $roles;
+    private $roles; //sprobowac zmienic na zwykly string
 
     public function __construct()
     {
@@ -225,7 +265,6 @@ class User implements UserInterface
 
     }
 
-
     public function getRetypedPassword()
     {
         return $this->retypedPassword;
@@ -235,6 +274,43 @@ class User implements UserInterface
     {
         $this->retypedPassword = $retypedPassword;
     }
+
+
+    public function getNewPass(): ?string
+    {
+        return $this->newPass;
+    }
+
+
+    public function setNewPass($newPass): void
+    {
+        $this->newPass = $newPass;
+    }
+
+
+    public function getNewRetypedPass(): ?string
+    {
+        return $this->newRetypedPass;
+    }
+
+
+    public function setNewRetypedPass($newRetypedPass): void
+    {
+        $this->newRetypedPass = $newRetypedPass;
+    }
+
+
+    public function getOldPass(): ?string
+    {
+        return $this->oldPass;
+    }
+
+
+    public function setOldPass($oldPass): void
+    {
+        $this->oldPass = $oldPass;
+    }
+
 
     public function addPost(WorkPost $post): self
     {

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Speed
- * Date: 07.06.2019
- * Time: 01:20
- */
 
 namespace App\EventSubscriber;
 
@@ -44,7 +38,7 @@ class PasswordHashSubscriber implements EventSubscriberInterface //klasa ktora h
         $method = $event->getRequest()->getMethod();
 
         if (!$user instanceof User ||
-            !in_array($method, [Request::METHOD_POST, Request::METHOD_PUT])) {
+            !in_array($method, [Request::METHOD_POST])) {
             return;
         }
 
