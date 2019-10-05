@@ -164,7 +164,7 @@ class User implements UserInterface
     private $question;
 
     /**
-     * @ORM\Column(type="simple_array", length=200)
+     * @ORM\Column(type="simple_array", length=200, nullable=true)
      * @Groups({"get-admin", "get-owner"})
      */
     private $roles; //sprobowac zmienic na zwykly string
