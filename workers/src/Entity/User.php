@@ -168,11 +168,28 @@ class User implements UserInterface
      */
     private $roles;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $passChangeDate;
+
+    /**
+     * @ORM\Column(type="boolean", options={"default":0})
+     */
+    private $enabled;
+
+    /**
+     * @ORM\Column(type="string", length=40, nullable=true)
+     */
+    private $confirmationToken;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
         $this->question = new ArrayCollection();
         $this->roles = self::DEFAULTS_ROLES;
+        $this->enabled = false;
+        $this->confirmationToken = null;
     }
 
     public function getId(): ?int
@@ -309,6 +326,44 @@ class User implements UserInterface
     {
         $this->oldPass = $oldPass;
     }
+
+
+    public function getPassChangeDate()
+    {
+        return $this->passChangeDate;
+    }
+
+
+    public function setPassChangeDate($passChangeDate): void
+    {
+        $this->passChangeDate = $passChangeDate;
+    }
+
+
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+
+    public function setEnabled($enabled): void
+    {
+        $this->enabled = $enabled;
+    }
+
+
+    public function getConfirmationToken()
+    {
+        return $this->confirmationToken;
+    }
+
+
+    public function setConfirmationToken($confirmationToken): void
+    {
+        $this->confirmationToken = $confirmationToken;
+    }
+
+
 
 
     public function addPost(WorkPost $post): self
