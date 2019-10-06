@@ -51,7 +51,6 @@ use App\Controller\ResetPassAction;
  *              }
  *          }
  *     },
- *
  * )
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity("username")
@@ -164,10 +163,10 @@ class User implements UserInterface
     private $question;
 
     /**
-     * @ORM\Column(type="simple_array", length=200, nullable=true)
+     * @ORM\Column(type="simple_array", length=200)
      * @Groups({"get-admin", "get-owner"})
      */
-    private $roles; //sprobowac zmienic na zwykly string
+    private $roles;
 
     public function __construct()
     {

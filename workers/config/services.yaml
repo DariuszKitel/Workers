@@ -33,4 +33,4 @@ services:
     App\Serializer\UserAttributeNormalizer:
         arguments: ['@security.token_storage']
         tags:
-            - { name: 'serializer.normalizer', priority: }
+            - { name: 'serializer.normalizer', priority: 64}

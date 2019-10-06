@@ -42,7 +42,10 @@ class ResetPassAction
 
     public function __invoke(User $data)
     {
-        $this->validator->validate($data);
+
+        $context['groups'] = ['put-reset-pass'];
+
+        $this->validator->validate($data, $context);
 
         $data->setPassword(
             $this->userPasswordEncoder->encodePassword(
