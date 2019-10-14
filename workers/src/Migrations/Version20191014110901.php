@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20191006175915 extends AbstractMigration
+final class Version20191014110901 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -25,7 +25,8 @@ final class Version20191006175915 extends AbstractMigration
         $this->addSql('CREATE TABLE question (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, author_id INTEGER NOT NULL, work_post_id INTEGER NOT NULL, content CLOB NOT NULL, published DATETIME NOT NULL)');
         $this->addSql('CREATE INDEX IDX_B6F7494EF675F31B ON question (author_id)');
         $this->addSql('CREATE INDEX IDX_B6F7494E9E42BB0E ON question (work_post_id)');
-        $this->addSql('CREATE TABLE user (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL)');
+        $this->addSql('CREATE TABLE user (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, roles CLOB DEFAULT \'ROLE_QUESTIONER\' NOT NULL --(DC2Type:simple_array)
+        , pass_change_date INTEGER DEFAULT NULL, enabled BOOLEAN DEFAULT \'0\' NOT NULL, confirmation_token VARCHAR(40) DEFAULT NULL)');
         $this->addSql('CREATE TABLE work_post (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, author_id INTEGER NOT NULL, title VARCHAR(255) NOT NULL, published DATETIME NOT NULL, content CLOB NOT NULL, cv VARCHAR(255) NOT NULL, slug VARCHAR(255) DEFAULT NULL)');
         $this->addSql('CREATE INDEX IDX_A349DDB5F675F31B ON work_post (author_id)');
     }

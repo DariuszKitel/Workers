@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Question;
 use App\Entity\User;
 use App\Entity\WorkPost;
+use App\Security\TokenGenerator;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -28,38 +29,48 @@ class AppFixtures extends Fixture
             'email' => 'wonder@gmail.com',
             'name' => 'Wonder Janusz',
             'password' => 'wonder123',
-            'roles' => [User::ROLE_SUPERADMIN]
+            'roles' => [User::ROLE_SUPERADMIN],
+            'enabled' => true
         ],[
             'username' => 'Jasio',
             'email' => 'jasio@gmail.com',
             'name' => 'Jasio Masio',
             'password' => 'jasio123',
-            'roles' => [User::ROLE_ADMIN]
+            'roles' => [User::ROLE_ADMIN],
+            'enabled' => true
         ],[
             'username' => 'Marek',
             'email' => 'marek@gmail.com',
             'name' => 'Marek Bak',
             'password' => 'marek123',
-            'roles' => [User::ROLE_WRITER]
+            'roles' => [User::ROLE_WRITER],
+            'enabled' => true
         ],[
             'username' => 'Adam',
             'email' => 'adam@gmail.com',
             'name' => 'Adam Mak',
             'password' => 'adam123',
-            'roles' => [User::ROLE_EDITOR]
+            'roles' => [User::ROLE_EDITOR],
+            'enabled' => false
         ],[
             'username' => 'Lukasz',
             'email' => 'lukasz@gmail.com',
             'name' => 'Lukasz Mar',
             'password' => 'lukasz123',
-            'roles' => [User::ROLE_QUESTIONER]
+            'roles' => [User::ROLE_QUESTIONER],
+            'enabled' => true
         ]
     ];
+    /**
+     * @var TokenGenerator
+     */
+    private $tokenGenerator;
 
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder, TokenGenerator $tokenGenerator)
     {
         $this->passwordEncoder = $passwordEncoder;
         $this->faker = \Faker\Factory::create();
+        $this->tokenGenerator = $tokenGenerator;
     }
 
     public function load(ObjectManager $manager)
@@ -72,7 +83,7 @@ class AppFixtures extends Fixture
     private function loadWorkPost(ObjectManager $manager)
     {
 
-        for($i = 0 ; $i <100 ; $i++) {
+        for($i = 0 ; $i <20 ; $i++) {
             $workPost = new WorkPost();
             $workPost->setTitle($this->faker->realText(30));
             $workPost->setPublished($this->faker->dateTimeThisYear);
@@ -104,7 +115,13 @@ class AppFixtures extends Fixture
                 $userFixture['password']
             ));
             $user->setRoles($userFixture['roles']);
-            $user->setEnabled(true);
+            $user->setEnabled($userFixture['enabled']);
+
+            if (!$userFixture['enabled']) {
+                $user->setConfirmationToken(
+                    $this->tokenGenerator->getRandomSecureToken()
+                );
+            }
 
             $this->addReference('user_' . $userFixture['username'], $user);
 
@@ -116,7 +133,7 @@ class AppFixtures extends Fixture
 
     private function loadQuestion(ObjectManager $manager)
     {
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             for ($j = 0; $j < rand(1,10); $j++) {
                 $question = new Question();
                 $question->setContent($this->faker->realText());

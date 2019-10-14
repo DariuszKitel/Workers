@@ -107,28 +107,30 @@ class User implements UserInterface
 
     /**
      * @Groups({"put-reset-pass"})
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"put-reset-pass"})
      * @Assert\Regex(
      *     pattern="/(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{7,}/",
-     *     message="Hasło musi składać się conajmniej z 7 znaków i zawierać jedną cyfrę, jedną dużą literę oraz małą"
+     *     message="Hasło musi składać się conajmniej z 7 znaków i zawierać jedną cyfrę, jedną dużą literę oraz małą",
+     *     groups={"put-reset-pass"}
      * )
      */
     private $newPass;
 
     /**
      * @Groups({"put-reset-pass"})
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"put-reset-pass"})
      * @Assert\Expression(
      *     "this.getNewPass() === this.getNewRetypedPass()",
-     *     message="Hasła nie pasują"
+     *     message="Hasła nie pasują",
+     *     groups={"put-reset-pass"}
      * )
      */
     private $newRetypedPass;
 
     /**
      * @Groups({"put-reset-pass"})
-     * @Assert\NotBlank()
-     * @UserPassword()
+     * @Assert\NotBlank(groups={"put-reset-pass"})
+     * @UserPassword(groups={"put-reset-pass"})
      */
     private $oldPass;
 
@@ -163,7 +165,7 @@ class User implements UserInterface
     private $question;
 
     /**
-     * @ORM\Column(type="simple_array", length=200)
+     * @ORM\Column(type="simple_array", length=200, options={"default":"ROLE_QUESTIONER"})
      * @Groups({"get-admin", "get-owner"})
      */
     private $roles;
