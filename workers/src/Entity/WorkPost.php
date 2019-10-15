@@ -77,7 +77,9 @@ class WorkPost implements AuthoredEntityInterface, PublishedDateEntityInterface
     private $author;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToMany(targetEntity="App\Entity\CV")
+     * @ORM\JoinTable()
+     * @ApiSubresource()
      * @Groups({"post", "get-work-post-with-author"})
      */
     private $CV;
@@ -96,9 +98,19 @@ class WorkPost implements AuthoredEntityInterface, PublishedDateEntityInterface
      */
     private $question;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Image")
+     * @ORM\JoinTable()
+     * @ApiSubresource()
+     * @Groups({"post", "get-work-post-with-author"})
+     */
+    private $images;
+
     public function __construct()
     {
         $this->question = new ArrayCollection();
+        $this->images = new ArrayCollection();
+        $this->CV = new ArrayCollection();
     }
 
     public function getQuestion(): Collection
@@ -147,18 +159,20 @@ class WorkPost implements AuthoredEntityInterface, PublishedDateEntityInterface
         return $this;
     }
 
-    public function getCV(): ?string
+    public function getCV(): Collection
     {
         return $this->CV;
     }
 
-    public function setCV(string $CV): self
+    public function addCV(CV $cv)
     {
-        $this->CV = $CV;
-
-        return $this;
+        $this->CV->add($cv);
     }
 
+    public function removeCV(CV $cv)
+    {
+        $this->CV->removeElement($cv);
+    }
 
     public function getSlug(): ?string
     {
@@ -188,6 +202,23 @@ class WorkPost implements AuthoredEntityInterface, PublishedDateEntityInterface
 
         return $this;
     }
+
+
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Image $image)
+    {
+        $this->images->add($image);
+    }
+
+    public function removeImage(Image $image)
+    {
+        $this->images->removeElement($image);
+    }
+
 
 
 

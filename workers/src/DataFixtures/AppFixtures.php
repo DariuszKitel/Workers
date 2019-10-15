@@ -92,7 +92,6 @@ class AppFixtures extends Fixture
             $authorReference = $this->getRandomUserReference($workPost);
 
             $workPost->setAuthor($authorReference);
-            $workPost->setCV($this->faker->password());
             $workPost->setSlug($this->faker->slug);
 
             $this->setReference("work_post_$i", $workPost);

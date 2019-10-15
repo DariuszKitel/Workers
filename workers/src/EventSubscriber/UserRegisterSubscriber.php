@@ -56,7 +56,5 @@ class UserRegisterSubscriber implements EventSubscriberInterface //klasa ktora h
             $this->tokenGenerator->getRandomSecureToken()
         );
 
-        
-
     }
 }
