@@ -14,6 +14,7 @@ use App\Controller\UploadCvAction;
  *@ORM\Entity()
  * @Vich\Uploadable()
  * @ApiResource(
+ *     attributes={"order"={"id": "ASC"}},
  *     collectionOperations={
  *          "get",
  *          "post"={

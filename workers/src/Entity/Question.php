@@ -12,6 +12,7 @@ use App\Interfaces\PublishedDateEntityInterface;
 
 /**
  * @ApiResource(
+ *     attributes={"order"={"published": "DESC"}},
  *     itemOperations={
  *          "get",
  *          "put"={
