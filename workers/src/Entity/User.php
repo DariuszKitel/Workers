@@ -38,7 +38,8 @@ use App\Controller\ResetPassAction;
  *              "controller"=ResetPassAction::class,
  *              "denormalization_context"={
  *              "groups"={"put-reset-pass"}
- *              }
+ *              },
+ *              "validation_groups"={"put-reset-pass"}
  *          }
  *     },
  *     collectionOperations={
@@ -48,7 +49,8 @@ use App\Controller\ResetPassAction;
  *              },
  *              "normalization_context"={
  *              "groups"={"get"}
- *              }
+ *              },
+ *              "validation_groups"={"post"}
  *          }
  *     },
  * )
