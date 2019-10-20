@@ -115,7 +115,7 @@ class Question implements AuthoredEntityInterface, PublishedDateEntityInterface
     /**
      * @return User
      */
-    public function getAuthor(): User
+    public function getAuthor(): ?User
     {
         return $this->author;
     }
@@ -130,7 +130,7 @@ class Question implements AuthoredEntityInterface, PublishedDateEntityInterface
         return $this;
     }
 
-    public function getWorkPost(): WorkPost
+    public function getWorkPost(): ?WorkPost
     {
         return $this->workPost;
     }
@@ -142,6 +142,9 @@ class Question implements AuthoredEntityInterface, PublishedDateEntityInterface
         return $this;
     }
 
-
+    public function __toString()
+    {
+        return substr($this->content, 0, 20) . '...';
+    }
 
 }

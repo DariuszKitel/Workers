@@ -225,7 +225,7 @@ class WorkPost implements AuthoredEntityInterface, PublishedDateEntityInterface
     /**
      * @return User
      */
-    public function getAuthor(): User
+    public function getAuthor(): ?User
     {
         return $this->author;
     }
@@ -256,7 +256,10 @@ class WorkPost implements AuthoredEntityInterface, PublishedDateEntityInterface
         $this->images->removeElement($image);
     }
 
-
+    public function __toString(): string
+    {
+        return $this->title;
+    }
 
 
 }

@@ -4,4 +4,6 @@ easy_admin:
         - App\Entity\WorkPost
         - App\Entity\Question
         - App\Entity\User
+        - App\Entity\Image
+        - App\Entity\CV
     site_name: '<em style="font-size: 180%;">Workers</em>'
