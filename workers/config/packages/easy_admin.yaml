@@ -1,9 +1,40 @@
 easy_admin:
     entities:
 #        # List the entity class name you want to manage
-        - App\Entity\WorkPost
-        - App\Entity\Question
-        - App\Entity\User
-        - App\Entity\Image
-        - App\Entity\CV
+        WorkPost:
+            class: App\Entity\WorkPost
+            list:
+                actions: [{ name: 'Show'}]
+            show:
+                fields:
+                    - id
+                    - title
+                    - published
+                    - { property: 'question', template: 'easy_admin/WorkPost/questions.html.twig'}
+                    - images
+                    - CV
+        Question:
+            class: App\Entity\Question
+        User:
+            class: App\Entity\User
+            controller: App\Controller\UserAdminController
+        Image:
+            class: App\Entity\Image
+            list:
+                fields:
+                    - id
+                    - {property: 'url', type: 'image', label: 'Image'}
+            form:
+                fields:
+                    - {property: 'file', type: 'Vich\UploaderBundle\Form\Type\VichFileType'}
+        CV:
+            class: App\Entity\CV
+            list:
+                fields:
+                    - id
+                    - {property: 'urlcv', type: 'file', label: 'CV'}
+            form:
+                fields:
+                    - {property: 'filecv', type: 'Vich\UploaderBundle\Form\Type\VichFileType'}
+
     site_name: '<em style="font-size: 180%;">Workers</em>'

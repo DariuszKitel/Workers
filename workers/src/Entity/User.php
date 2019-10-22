@@ -55,8 +55,8 @@ use App\Controller\ResetPassAction;
  *     },
  * )
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity("username")
- * @UniqueEntity("email")
+ * @UniqueEntity("username", groups={"post"})
+ * @UniqueEntity("email", groups={"post"})
  */
 class User implements UserInterface
 {
@@ -178,7 +178,7 @@ class User implements UserInterface
     private $passChangeDate;
 
     /**
-     * @ORM\Column(type="boolean", options={"default":0})
+     * @ORM\Column(type="boolean", options={"default":0}, nullable=true)
      */
     private $enabled;
 
@@ -373,51 +373,51 @@ class User implements UserInterface
     }
 
 
-    public function addPost(WorkPost $post): self
-    {
-        if (!$this->posts->contains($post)) {
-            $this->posts[] = $post;
-            $post->setAuthor($this);
-        }
-
-        return $this;
-    }
-
-    public function removePost(WorkPost $post): self
-    {
-        if ($this->posts->contains($post)) {
-            $this->posts->removeElement($post);
-            // set the owning side to null (unless already changed)
-            if ($post->getAuthor() === $this) {
-                $post->setAuthor(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function addQuestion(Question $question): self
-    {
-        if (!$this->question->contains($question)) {
-            $this->question[] = $question;
-            $question->setAuthor($this);
-        }
-
-        return $this;
-    }
-
-    public function removeQuestion(Question $question): self
-    {
-        if ($this->question->contains($question)) {
-            $this->question->removeElement($question);
-            // set the owning side to null (unless already changed)
-            if ($question->getAuthor() === $this) {
-                $question->setAuthor(null);
-            }
-        }
-
-        return $this;
-    }
+//    public function addPost(WorkPost $post): self
+//    {
+//        if (!$this->posts->contains($post)) {
+//            $this->posts[] = $post;
+//            $post->setAuthor($this);
+//        }
+//
+//        return $this;
+//    }
+//
+//    public function removePost(WorkPost $post): self
+//    {
+//        if ($this->posts->contains($post)) {
+//            $this->posts->removeElement($post);
+//            // set the owning side to null (unless already changed)
+//            if ($post->getAuthor() === $this) {
+//                $post->setAuthor(null);
+//            }
+//        }
+//
+//        return $this;
+//    }
+//
+//    public function addQuestion(Question $question): self
+//    {
+//        if (!$this->question->contains($question)) {
+//            $this->question[] = $question;
+//            $question->setAuthor($this);
+//        }
+//
+//        return $this;
+//    }
+//
+//    public function removeQuestion(Question $question): self
+//    {
+//        if ($this->question->contains($question)) {
+//            $this->question->removeElement($question);
+//            // set the owning side to null (unless already changed)
+//            if ($question->getAuthor() === $this) {
+//                $question->setAuthor(null);
+//            }
+//        }
+//
+//        return $this;
+//    }
 
 
 }
