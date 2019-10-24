@@ -2,11 +2,17 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Witamy!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+            <div align="center"> <h1>Witaj na portalu z ogłoszeniami pracowników</h1></div>
+            <br>
+            <p align="center">Tylko tutaj możesz po zalogowaniu dodać swoją ofertę dla pracodawcy a wraz z nią CV oraz zdjęcie.
+               Możesz również otrzymywać zapytania od przyszłego pracodawcy.
+            </p>
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
