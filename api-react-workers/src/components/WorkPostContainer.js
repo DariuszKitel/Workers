@@ -19,8 +19,9 @@ class WorkPostContainer extends React.Component{
     }
 
     render() {
-        console.log(this.props);
-        return (<WorkPost posts={this.props.posts} />)
+        const {posts, isFetching} = this.props;
+
+        return (<WorkPost posts={posts} isFetching={isFetching} />)
     }
 }
 

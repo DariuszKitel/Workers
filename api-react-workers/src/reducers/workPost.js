@@ -23,10 +23,12 @@ export default(state = {
                 posts: null
             };
         case WORK_POST_ADD:
-        return {
+        state = {
             ...state,
             posts: state.posts ? state.posts.concat(action.data) : state.posts
         };
+        console.log(state);
+        return state;
         default:
             return state;
     }
