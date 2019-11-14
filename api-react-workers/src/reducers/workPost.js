@@ -1,4 +1,4 @@
-import {WORK_POST_RECEIVED, WORK_POST_ADD, WORK_POST_REQUEST, WORK_POST_ERROR} from "../actions/actions";
+import {WORK_POST_RECEIVED, WORK_POST_ADD, WORK_POST_REQUEST, WORK_POST_ERROR} from "../actions/constants";
 
 export default(state = {
     posts: null,
