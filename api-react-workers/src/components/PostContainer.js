@@ -2,6 +2,7 @@ import React from 'react';
 import {postFetch, postUnload} from "../actions/actions";
 import {connect} from "react-redux";
 import {Post} from "./Post";
+import {Spinner} from "./Spinner";
 
 const mapeStateToProps = state => ({
     ...state.post
@@ -22,7 +23,10 @@ class PostContainer extends React.Component {
 
     render() {
         const {isFetching, post} = this.props;
-        return (<Post isFetching={isFetching} post={post} />);
+        if (isFetching) {
+            return (<Spinner/>);
+        }
+        return (<Post post={post} />);
     }
 }
 

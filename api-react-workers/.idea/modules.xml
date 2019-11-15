@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/api-react-workers.iml" filepath="$PROJECT_DIR$/.idea/api-react-workers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../workers/.idea/workers.iml" filepath="$PROJECT_DIR$/../workers/.idea/workers.iml" />
     </modules>
   </component>
 </project>
