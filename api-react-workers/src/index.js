@@ -8,8 +8,12 @@ import App from "./components/App";
 import {Route} from "react-router";
 import reducer from "./reducer";
 import thunkMiddleware from 'redux-thunk';
+import {tokenMiddleware} from "./middleware";
 
-const store = createStore(reducer, applyMiddleware(thunkMiddleware));
+const store = createStore(
+    reducer,
+    applyMiddleware(thunkMiddleware, tokenMiddleware)
+);
 
 const history = createHistory();
 

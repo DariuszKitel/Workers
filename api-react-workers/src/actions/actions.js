@@ -1,7 +1,14 @@
 import {requests} from "../agent";
 import {
-    POST_ERROR, POST_RECEIVED,
-    POST_REQUEST, POST_UNLOAD,
+    POST_ERROR,
+    POST_RECEIVED,
+    POST_REQUEST,
+    POST_UNLOAD,
+    QUESTION_LIST_ERROR,
+    QUESTION_LIST_RECEIVED,
+    QUESTION_LIST_REQUEST,
+    QUESTION_LIST_UNLOAD,
+    USER_LOGIN_SUCCESS,
     WORK_POST_ADD,
     WORK_POST_ERROR,
     WORK_POST_RECEIVED,
@@ -58,6 +65,53 @@ export const postFetch = (id) => {
             .catch(error => dispatch(postError(error)));
     }
 };
+
+
+export const questionListRequest = () => ({
+    type: QUESTION_LIST_REQUEST
+});
+
+export const questionListError = (error) => ({
+    type: QUESTION_LIST_ERROR,
+    error
+});
+
+export const questionListReceived = (data) => ({
+    type: QUESTION_LIST_RECEIVED,
+    data
+});
+
+export const questionListUnload = () => ({
+    type: QUESTION_LIST_UNLOAD
+});
+
+export const questionListFetch = (id) => {
+    return (dispatch) => {
+        dispatch(questionListRequest());
+        return requests.get(`/work_posts/${id}/questions`)
+            .then(response => dispatch(questionListReceived(response)))
+            .catch(error => dispatch(questionListError(error)));
+    }
+};
+
+export const userLoginSuccess = (token, userId) => {
+    return {
+        type: USER_LOGIN_SUCCESS,
+        token,
+        userId
+    }
+};
+
+export const userLoginAttempt = (username, password) => {
+    return (dispatch) => {
+        return requests.post('/login_check', {username, password}, false).then(
+            response => dispatch(userLoginSuccess(response.token, response.id))
+        ).catch(error => {
+            console.log('Login failed');
+        });
+    }
+};
+
 
 export const workPostAdd = () => ({
     type: WORK_POST_ADD,

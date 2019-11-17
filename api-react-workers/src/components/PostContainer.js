@@ -3,6 +3,7 @@ import {postFetch, postUnload} from "../actions/actions";
 import {connect} from "react-redux";
 import {Post} from "./Post";
 import {Spinner} from "./Spinner";
+import QuestionListContainer from "./QuestionListContainer";
 
 const mapeStateToProps = state => ({
     ...state.post
@@ -26,7 +27,13 @@ class PostContainer extends React.Component {
         if (isFetching) {
             return (<Spinner/>);
         }
-        return (<Post post={post} />);
+
+        return (
+            <div>
+                <Post post={post} />
+                {post && <QuestionListContainer workPostId={this.props.match.params.id}/>}
+            </div>
+        )
     }
 }
 
