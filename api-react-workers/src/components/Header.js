@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 
 export default class Header extends React.Component {
     render() {
+        const {isAuthenticated} = this.props;
         return (
             <nav className="navbar navbar-dark bg-dark">
                 <Link to="/" className="navbar-brand">
@@ -10,9 +11,9 @@ export default class Header extends React.Component {
                 </Link>
 
                 <span className="navbar-text">
-                    <Link to="/login">Log in</Link>
+                    {isAuthenticated ? <span>Hello User!</span> : <Link to="/login">Log in</Link>}
                 </span>
             </nav>
-        )
+        );
     }
 }

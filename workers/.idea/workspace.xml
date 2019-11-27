@@ -5,106 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a7b7a2e-40a8-4c6d-aca4-298104d0c08a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../api-react-workers/.idea/api-react-workers.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../api-react-workers/.idea/api-react-workers.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api-react-workers/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../api-react-workers/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../api-react-workers/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../api-react-workers/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api-react-workers/src/components/Post.js" beforeDir="false" afterPath="$PROJECT_DIR$/../api-react-workers/src/components/Post.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/@types/jquery/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/@types/jquery/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/@types/jquery/index.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/@types/jquery/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/.npmignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/CNAME" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/README_zh.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/bower.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/demo/clock.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/demo/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/demo/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/dist/timeago.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/dist/timeago.locales.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/dist/timeago.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/gulpfile.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/ar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/be.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/bg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/ca.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/da.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/de.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/el.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/en.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/en_short.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/es.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/eu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/fa.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/fi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/fr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/he.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/hu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/in_BG.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/in_HI.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/in_ID.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/it.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/ja.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/ko.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/locales.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/ml.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/my.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/nb_NO.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/nl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/nn_NO.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/pl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/pt_BR.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/ro.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/ru.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/sv.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/ta.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/th.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/tr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/uk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/vi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/zh_CN.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/locales/zh_TW.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/src/timeago.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/src/timeago.locales.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/ar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/be.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/bg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/ca.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/en.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/en_short.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/eu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/fa.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/fi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/he.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/in_BG.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/in_HI.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/in_ID.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/ja.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/ko.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/my.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/nb_NO.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/nn_NO.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/pl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/ro.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/ru.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/ta.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/tr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/uk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/vi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales/zh_CN.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/locales_test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/test-builder.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/test_dev.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/tests/test_ts.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/timeago.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/timeago.js/webpack.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-react-workers/src/actions/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../api-react-workers/src/actions/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-react-workers/src/actions/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/../api-react-workers/src/actions/constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-react-workers/src/agent.js" beforeDir="false" afterPath="$PROJECT_DIR$/../api-react-workers/src/agent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-react-workers/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../api-react-workers/src/components/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-react-workers/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/../api-react-workers/src/components/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-react-workers/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../api-react-workers/src/components/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-react-workers/src/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../api-react-workers/src/reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-react-workers/src/reducers/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/../api-react-workers/src/reducers/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -135,19 +46,34 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/packages/easy_admin.yaml">
+        <entry file="file://$PROJECT_DIR$/src/DataFixtures/AppFixtures.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="43" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
+            <state relative-caret-position="481">
+              <caret line="103" selection-start-line="103" selection-end-line="103" />
+              <folding>
+                <element signature="e#36#60#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/packages/security.yaml">
+        <entry file="file://$PROJECT_DIR$/config/services.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="901">
-              <caret line="53" column="35" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
+            <state relative-caret-position="314">
+              <caret line="35" column="60" selection-start-line="35" selection-start-column="60" selection-end-line="35" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/EventListener/AuthenticationSuccessListener.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+              <folding>
+                <element signature="e#36#56#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -164,7 +90,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
+            <state relative-caret-position="306">
               <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
               <folding>
                 <element signature="e#117#182#0#PHP" expanded="true" />
@@ -176,7 +102,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/AdminSecurityController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="238">
               <caret line="15" column="57" selection-start-line="15" selection-start-column="57" selection-end-line="15" selection-end-column="57" />
               <folding>
                 <element signature="e#35#100#0#PHP" expanded="true" />
@@ -194,10 +120,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="1258">
               <caret line="74" column="50" selection-start-line="74" selection-start-column="50" selection-end-line="74" selection-end-column="50" />
               <folding>
                 <element signature="e#30#74#0#PHP" expanded="true" />
@@ -209,7 +135,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entity/WorkPost.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1207">
+            <state relative-caret-position="1751">
               <caret line="118" column="23" selection-start-line="118" selection-start-column="23" selection-end-line="118" selection-end-column="23" />
               <folding>
                 <element signature="e#30#72#0#PHP" expanded="true" />
@@ -221,7 +147,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Form/CvType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
+            <state relative-caret-position="476">
               <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
               <folding>
                 <element signature="e#29#47#0#PHP" expanded="true" />
@@ -418,11 +344,11 @@
       <path value="$PROJECT_DIR$/vendor/symfony/phpunit-bridge" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="15" />
-    <option name="y" value="30" />
-    <option name="width" value="1890" />
-    <option name="height" value="960" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-12" />
+    <option name="y" value="-12" />
+    <option name="width" value="1944" />
+    <option name="height" value="1044" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -430,6 +356,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -440,7 +367,7 @@
             <path>
               <item name="workers" type="b2602c69:ProjectViewProjectNode" />
               <item name="workers" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="workers" type="b2602c69:ProjectViewProjectNode" />
@@ -464,6 +391,12 @@
               <item name="workers" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="workers" type="b2602c69:ProjectViewProjectNode" />
+              <item name="workers" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="EventListener" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="workers" type="b2602c69:ProjectViewProjectNode" />
@@ -521,7 +454,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -582,17 +514,20 @@
       <workItem from="1573669913701" duration="52000" />
       <workItem from="1573743185763" duration="1195000" />
       <workItem from="1573776766345" duration="330000" />
+      <workItem from="1573935725252" duration="372000" />
+      <workItem from="1573940983115" duration="191000" />
+      <workItem from="1573949080526" duration="1028000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="300779000" />
+    <option name="totallyTimeSpent" value="302370000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4991119" visible="true" weight="0.28178138" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4991119" visible="true" weight="0.29959515" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5008881" side_tool="true" weight="0.2582996" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -649,8 +584,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Migrations/Version20191012063507.php" />
-    <entry file="file://$PROJECT_DIR$/src/Migrations/Version20191012064304.php" />
     <entry file="file://$PROJECT_DIR$/src/Interfaces/PublishedDateEntityInterface.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -676,13 +609,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="48" column="31" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/services.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="35" column="60" selection-start-line="35" selection-start-column="60" selection-end-line="35" selection-end-column="60" />
         </state>
       </provider>
     </entry>
@@ -958,16 +884,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataFixtures/AppFixtures.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1303">
-          <caret line="103" selection-start-line="103" selection-end-line="103" />
-          <folding>
-            <element signature="e#36#60#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/packages/easy_admin.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -982,6 +898,9 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -991,7 +910,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
+        <state relative-caret-position="306">
           <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
           <folding>
             <element signature="e#117#182#0#PHP" expanded="true" />
@@ -1001,7 +920,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/AdminSecurityController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="238">
           <caret line="15" column="57" selection-start-line="15" selection-start-column="57" selection-end-line="15" selection-end-column="57" />
           <folding>
             <element signature="e#35#100#0#PHP" expanded="true" />
@@ -1016,19 +935,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/CvType.php">
+    <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+        <state relative-caret-position="1258">
+          <caret line="74" column="50" selection-start-line="74" selection-start-column="50" selection-end-line="74" selection-end-column="50" />
           <folding>
-            <element signature="e#29#47#0#PHP" expanded="true" />
+            <element signature="e#30#74#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/WorkPost.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1207">
+        <state relative-caret-position="1751">
           <caret line="118" column="23" selection-start-line="118" selection-start-column="23" selection-end-line="118" selection-end-column="23" />
           <folding>
             <element signature="e#30#72#0#PHP" expanded="true" />
@@ -1036,12 +955,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
+    <entry file="file://$PROJECT_DIR$/src/Form/CvType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="74" column="50" selection-start-line="74" selection-start-column="50" selection-end-line="74" selection-end-column="50" />
+        <state relative-caret-position="476">
+          <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
           <folding>
-            <element signature="e#30#74#0#PHP" expanded="true" />
+            <element signature="e#29#47#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataFixtures/AppFixtures.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="103" selection-start-line="103" selection-end-line="103" />
+          <folding>
+            <element signature="e#36#60#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/services.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="35" column="60" selection-start-line="35" selection-start-column="60" selection-end-line="35" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EventListener/AuthenticationSuccessListener.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+          <folding>
+            <element signature="e#36#56#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
