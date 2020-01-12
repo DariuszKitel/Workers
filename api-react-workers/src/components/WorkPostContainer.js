@@ -1,15 +1,16 @@
 import React from 'react';
 import WorkPost from "./WorkPost";
-import {workPostFetch} from "../actions/actions";
+import {workPostFetch, workPostSetPage} from "../actions/actions";
 import {connect} from "react-redux";
 import {Spinner} from "./Spinner";
+import {Paginator} from "./Paginator";
 
 const mapStateToProps = state => ({
     ...state.workPost
 });
 
 const mapDispatchToProps = {
-    workPostFetch
+    workPostFetch, workPostSetPage
 };
 
 class WorkPostContainer extends React.Component{
@@ -17,14 +18,27 @@ class WorkPostContainer extends React.Component{
         this.props.workPostFetch();
     }
 
+    componentDidUpdate(prevProps) {
+        const {currentPage, workPostFetch} = this.props;
+
+        if (prevProps.currentPage !== currentPage) {
+            workPostFetch(currentPage);
+        }
+    }
+
     render() {
-        const {posts, isFetching} = this.props;
+        const {posts, isFetching, workPostSetPage, currentPage} = this.props;
 
         if (isFetching) {
             return (<Spinner/>);
         }
 
-        return (<WorkPost posts={posts} />)
+        return (
+            <div>
+                <WorkPost posts={posts}/>
+                <Paginator currentPage={currentPage} pageCount={10} setPage={workPostSetPage}/>
+            </div>
+            )
     }
 }
 

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "classnames": "^2.2.6",
     "connected-react-router": "^6.5.2",
     "history": "^4.6.3",
     "marked": "^0.3.6",

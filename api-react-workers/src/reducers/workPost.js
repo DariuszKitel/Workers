@@ -1,8 +1,16 @@
-import {WORK_POST_RECEIVED, WORK_POST_ADD, WORK_POST_REQUEST, WORK_POST_ERROR} from "../actions/constants";
+import {
+    WORK_POST_RECEIVED,
+    WORK_POST_ADD,
+    WORK_POST_REQUEST,
+    WORK_POST_ERROR,
+    WORK_POST_SET_PAGE
+} from "../actions/constants";
 
 export default(state = {
     posts: null,
-    isFetching: false
+    isFetching: false,
+    currentPage: 1,
+    pageCount: null
 }, action) => {
     switch (action.type) {
         case WORK_POST_REQUEST:
@@ -27,8 +35,12 @@ export default(state = {
             ...state,
             posts: state.posts ? state.posts.concat(action.data) : state.posts
         };
-        console.log(state);
         return state;
+        case WORK_POST_SET_PAGE:
+            return {
+                ...state,
+                currentPage: action.page
+            };
         default:
             return state;
     }

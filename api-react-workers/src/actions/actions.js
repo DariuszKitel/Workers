@@ -12,7 +12,7 @@ import {
     WORK_POST_ADD,
     WORK_POST_ERROR,
     WORK_POST_RECEIVED,
-    WORK_POST_REQUEST
+    WORK_POST_REQUEST, WORK_POST_SET_PAGE
 } from "./constants";
 import {SubmissionError} from "redux-form";
 
@@ -31,10 +31,15 @@ export const workPostReceived = (data) => ({
     data
 });
 
-export const workPostFetch = () => {
+export const workPostSetPage = (page) => ({
+    type: WORK_POST_SET_PAGE,
+    page
+});
+
+export const workPostFetch = (page = 1) => {
     return (dispatch) => {
         dispatch(workPostRequest());
-        return requests.get('/work_posts')
+        return requests.get(`/work_posts?_page=${page}`)
             .then(response => dispatch(workPostReceived(response)))
             .catch(error => dispatch(workPostError(error)));
     }
