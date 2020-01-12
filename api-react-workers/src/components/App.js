@@ -6,14 +6,14 @@ import Header from "./Header";
 import PostContainer from "./PostContainer";
 import {requests} from "../agent";
 import {connect} from "react-redux";
-import {userProfileFetch} from "../actions/actions";
+import {userProfileFetch, userSetId} from "../actions/actions";
 
 const mapStateToProps = state => ({
     ...state.auth
 });
 
 const mapDispatchToProps = {
-  userProfileFetch
+  userProfileFetch,userSetId
 };
 
 class App extends React.Component{
@@ -26,21 +26,30 @@ class App extends React.Component{
         }
     }
 
-    componentDidUpdate(prevProps) {
-        const {userId, userProfileFetch} = this.props;
+    componentDidMount() {
+        const userId = window.localStorage.getItem('userId');
+        const {userSetId} = this.props;
 
-        if (prevProps.userId !== userId && userId !== null) {
-            console.log(`Old userId ${prevProps.userId}`);
+        if (userId) {
+            userSetId(userId);
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        const {userId, userData, userProfileFetch} = this.props;
+
+        if (prevProps.userId !== userId && userId !== null && userData === null) {
+            console.log(`Old user Id ${prevProps.userId}`);
             console.log(`New userId ${userId}`);
             userProfileFetch(userId);
         }
     }
 
     render() {
-        const {isAuthenticated} = this.props;
+        const {isAuthenticated, userData} = this.props;
         return (
           <div>
-            <Header isAuthenticated={isAuthenticated}/>
+            <Header isAuthenticated={isAuthenticated} userData={userData}/>
             <Switch>
                 <Route path="/login" component={Login}/>
                 <Route path="/work-post/:id" component={PostContainer}/>

@@ -5,14 +5,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/actions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/constants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/agent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/agent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/QuestionListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/QuestionListContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/form.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../workers/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../workers/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../workers/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../workers/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../workers/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../workers/config/services.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,14 +51,14 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../workers" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/node_modules/eslint" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -85,7 +84,9 @@
       <updated>1573669967773</updated>
       <workItem from="1573669969393" duration="52313000" />
       <workItem from="1573941175788" duration="15123000" />
-      <workItem from="1574879893471" duration="1266000" />
+      <workItem from="1574879893471" duration="6026000" />
+      <workItem from="1577423279359" duration="68000" />
+      <workItem from="1578424551785" duration="15219000" />
     </task>
     <servers />
   </component>
@@ -97,7 +98,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

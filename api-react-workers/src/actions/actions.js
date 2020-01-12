@@ -3,12 +3,12 @@ import {
     POST_ERROR,
     POST_RECEIVED,
     POST_REQUEST,
-    POST_UNLOAD,
+    POST_UNLOAD, QUESTION_ADDED,
     QUESTION_LIST_ERROR,
     QUESTION_LIST_RECEIVED,
     QUESTION_LIST_REQUEST,
     QUESTION_LIST_UNLOAD,
-    USER_LOGIN_SUCCESS, USER_PROFILE_ERROR, USER_PROFILE_RECEIVED, USER_PROFILE_REQUEST,
+    USER_LOGIN_SUCCESS, USER_PROFILE_ERROR, USER_PROFILE_RECEIVED, USER_PROFILE_REQUEST, USER_SET_ID,
     WORK_POST_ADD,
     WORK_POST_ERROR,
     WORK_POST_RECEIVED,
@@ -95,6 +95,23 @@ export const questionListFetch = (id) => {
     }
 };
 
+export const questionAdded = (question) => ({
+    type: QUESTION_ADDED,
+    question
+});
+
+export const questionAdd = (question, workPostId) => {
+    return (dispatch) => {
+        return requests.post(
+            '/questions',
+            {
+                content: question,
+                workPost: `/api/work_post/${workPostId}`
+            }
+        ).then(response => dispatch(questionAdded(response)))
+    }
+};
+
 export const userLoginSuccess = (token, userId) => {
     return {
         type: USER_LOGIN_SUCCESS,
@@ -107,11 +124,18 @@ export const userLoginAttempt = (username, password) => {
     return (dispatch) => {
         return requests.post('/login_check', {username, password}, false).then(
             response => dispatch(userLoginSuccess(response.token, response.id))
-        ).catch(error => {
+        ).catch(() => {
             throw new SubmissionError({
                 _error: 'Username or password is invalid'
             })
         });
+    }
+};
+
+export const userSetId = (userId) => {
+    return {
+        type: USER_SET_ID,
+        userId
     }
 };
 
@@ -127,10 +151,11 @@ export const userProfileError = () => {
     }
 };
 
-export const userProfileReceived = (userData) => {
+export const userProfileReceived = (userId, userData) => {
     return {
         type: USER_PROFILE_RECEIVED,
-        userData
+        userData,
+        userId
     }
 };
 
@@ -138,7 +163,7 @@ export const userProfileFetch = (userId) => {
     return (dispatch) => {
         dispatch(userProfileRequest());
         return requests.get(`/users/${userId}`, true).then(
-            response => dispatch(userProfileReceived(response))
+            response => dispatch(userProfileReceived(userId, response))
         ).catch(error => dispatch(userProfileError()))
     }
 };

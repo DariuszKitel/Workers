@@ -4,7 +4,11 @@
     <data-source name="workers" uuid="871ef0fc-05e8-44b6-8195-8c5593e16512">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0" />
       <auth-required>false</auth-required>
-      <introspection-schemas>*:</introspection-schemas>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="schema" qname="" />
+        </introspection-scope>
+      </schema-mapping>
     </data-source>
   </component>
 </project>

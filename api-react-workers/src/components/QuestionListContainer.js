@@ -3,9 +3,11 @@ import {questionListFetch, questionListUnload} from "../actions/actions";
 import {connect} from "react-redux";
 import {Spinner} from "./Spinner";
 import {QuestionList} from "./QuestionList";
+import QuestionForm from "./QuestionForm";
 
 const mapeStateToProps = state => ({
-    ...state.questionList
+    ...state.questionList,
+    isAuthenticated: state.auth.isAuthenticated
 });
 
 const mapDispatchToProps = {
@@ -22,11 +24,16 @@ class QuestionListContainer extends React.Component {
     }
 
     render() {
-        const {isFetching, questionList} = this.props;
+        const {isFetching, questionList, isAuthenticated, workPostId} = this.props;
         if (isFetching) {
             return (<Spinner/>);
         }
-        return (<QuestionList questionList={questionList} />);
+        return (
+            <div>
+                <QuestionList questionList={questionList}/>
+                {isAuthenticated && <QuestionForm workPostId={workPostId}/>}
+            </div>
+            )
     }
 }
 
