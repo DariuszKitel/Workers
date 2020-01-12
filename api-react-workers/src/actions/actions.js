@@ -8,7 +8,7 @@ import {
     QUESTION_LIST_RECEIVED,
     QUESTION_LIST_REQUEST,
     QUESTION_LIST_UNLOAD,
-    USER_LOGIN_SUCCESS, USER_PROFILE_ERROR, USER_PROFILE_RECEIVED, USER_PROFILE_REQUEST, USER_SET_ID,
+    USER_LOGIN_SUCCESS, USER_LOGOUT, USER_PROFILE_ERROR, USER_PROFILE_RECEIVED, USER_PROFILE_REQUEST, USER_SET_ID,
     WORK_POST_ADD,
     WORK_POST_ERROR,
     WORK_POST_RECEIVED,
@@ -108,7 +108,10 @@ export const questionAdd = (question, workPostId) => {
                 content: question,
                 workPost: `/api/work_post/${workPostId}`
             }
-        ).then(response => dispatch(questionAdded(response)))
+        ).then(response => dispatch(questionAdded(response))
+        ).catch(error => {
+            console.log(error);
+        })
     }
 };
 
@@ -132,6 +135,12 @@ export const userLoginAttempt = (username, password) => {
     }
 };
 
+export const userLogout = () => {
+    return {
+        type: USER_LOGOUT
+    }
+};
+
 export const userSetId = (userId) => {
     return {
         type: USER_SET_ID,
@@ -145,9 +154,10 @@ export const userProfileRequest = () => {
     }
 };
 
-export const userProfileError = () => {
+export const userProfileError = (userId) => {
     return {
-        type: USER_PROFILE_ERROR
+        type: USER_PROFILE_ERROR,
+        userId
     }
 };
 
@@ -164,7 +174,7 @@ export const userProfileFetch = (userId) => {
         dispatch(userProfileRequest());
         return requests.get(`/users/${userId}`, true).then(
             response => dispatch(userProfileReceived(userId, response))
-        ).catch(error => dispatch(userProfileError()))
+        ).catch(error => dispatch(userProfileError(userId)))
     }
 };
 

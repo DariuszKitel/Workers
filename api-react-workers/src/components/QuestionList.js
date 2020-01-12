@@ -6,7 +6,7 @@ export class QuestionList extends React.Component {
     render() {
         const {questionList} = this.props;
 
-        if (null === questionList) {
+        if (null === questionList || 0 === questionList.length) {
             return (<Message message="No question for post"/>);
         }
 

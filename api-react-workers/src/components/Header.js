@@ -9,11 +9,15 @@ export default class Header extends React.Component {
         if (null === userData) {
             return (<Spinner />)
         }
-        return (<span>Hello {userData.name}</span>)
-
+        return (
+            <span>
+                Hello {userData.name}, &nbsp;
+            </span>
+        );
     }
+
     render() {
-        const {isAuthenticated} = this.props;
+        const {isAuthenticated, logout} = this.props;
         return (
             <nav className="navbar navbar-dark bg-dark">
                 <Link to="/" className="navbar-brand">
@@ -21,7 +25,8 @@ export default class Header extends React.Component {
                 </Link>
 
                 <span className="navbar-text">
-                    {isAuthenticated ? <span>Hello User!</span> : <Link to="/login">Log in</Link>}
+                    {isAuthenticated ? <span>Witaj użytkowniku! <button className="btn btn-link btn-sm" href="#" onClick={logout}>Logout</button></span>
+                        : <Link to="/login">Log in</Link>}
                 </span>
             </nav>
         );

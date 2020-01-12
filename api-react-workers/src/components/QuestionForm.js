@@ -10,8 +10,8 @@ const mapDispatchToProps = {
 
 class QuestionForm extends React.Component {
     onSubmit(values) {
-        const {questionAdd, workPostId} = this.props;
-        return questionAdd(values.content, workPostId);
+        const {questionAdd, workPostId, reset} = this.props;
+        return questionAdd(values.content, workPostId).then(() => reset());
     }
     render() {
         const {handleSubmit, submitting} = this.props;
